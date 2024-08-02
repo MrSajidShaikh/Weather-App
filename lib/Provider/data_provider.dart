@@ -482,7 +482,7 @@ class DataProvider extends ChangeNotifier {
 
   Future<List<HourlyWeather>> _getHourlyWeather(
       dynamic hWeather, int id, bool temporary) async {
-    List<HourlyWeather> _hw = [];
+    List<HourlyWeather> hw = [];
     for (int i = 0; i < hWeather.length; i++) {
       HourlyWeather hwtemp = HourlyWeather(
         timestamp: hWeather[i]['dt'],
@@ -504,9 +504,9 @@ class DataProvider extends ChangeNotifier {
           conflictAlgorithm: ConflictAlgorithm.replace,
         );
       }
-      _hw.add(hwtemp);
+      hw.add(hwtemp);
     }
-    return [..._hw];
+    return [...hw];
   }
 
   //No internet case
