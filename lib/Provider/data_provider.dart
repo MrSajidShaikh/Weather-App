@@ -445,7 +445,7 @@ class DataProvider extends ChangeNotifier {
 
   Future<List<DailyWeather>> _getDailyWeather(
       dynamic dWeather, int id, bool temporary) async {
-    List<DailyWeather> _dw = [];
+    List<DailyWeather> dw = [];
     for (int i = 0; i < dWeather.length; i++) {
       DailyWeather dwtemp = DailyWeather(
         timestamp: dWeather[i]['dt'],
@@ -475,9 +475,9 @@ class DataProvider extends ChangeNotifier {
           conflictAlgorithm: ConflictAlgorithm.replace,
         );
       }
-      _dw.add(dwtemp);
+      dw.add(dwtemp);
     }
-    return [..._dw];
+    return [...dw];
   }
 
   Future<List<HourlyWeather>> _getHourlyWeather(
