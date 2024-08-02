@@ -447,7 +447,7 @@ class DataProvider extends ChangeNotifier {
       dynamic dWeather, int id, bool temporary) async {
     List<DailyWeather> _dw = [];
     for (int i = 0; i < dWeather.length; i++) {
-      DailyWeather _dwtemp = DailyWeather(
+      DailyWeather dwtemp = DailyWeather(
         timestamp: dWeather[i]['dt'],
         clouds: dWeather[i]['clouds'],
         dayFeelsLike: utils.toDouble(dWeather[i]['feels_like']['day']),
@@ -471,11 +471,11 @@ class DataProvider extends ChangeNotifier {
       if (!temporary) {
         await _database.insert(
           'daily$id',
-          _dwtemp.toMap(),
+          dwtemp.toMap(),
           conflictAlgorithm: ConflictAlgorithm.replace,
         );
       }
-      _dw.add(_dwtemp);
+      _dw.add(dwtemp);
     }
     return [..._dw];
   }
