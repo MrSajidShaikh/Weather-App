@@ -515,11 +515,11 @@ class DataProvider extends ChangeNotifier {
     for (int i = 0; i < _cityList.length; i++) {
       final List<HourlyWeather> _wh = _weather[_cityList[i].id]["hourly"];
       try {
-        final HourlyWeather _hr = _wh.firstWhere((element) {
+        final HourlyWeather hr = _wh.firstWhere((element) {
           return utils.compareDateTime(element.timestamp);
         });
         _getCurrentWeather(
-            _hr.toMap(), _cityList[i].id, false, _cityList[i].temporary, true);
+            hr.toMap(), _cityList[i].id, false, _cityList[i].temporary, true);
       } catch (e) {}
     }
   }
