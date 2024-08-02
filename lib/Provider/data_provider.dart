@@ -436,7 +436,7 @@ class DataProvider extends ChangeNotifier {
       }
     }
     if (local) {
-      _weather[id]['current'] = _cw;
+      _weather[id]?['current'] = _cw;
       notifyListeners();
     }
     //print("updated");
