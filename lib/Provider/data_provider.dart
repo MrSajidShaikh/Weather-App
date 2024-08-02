@@ -513,9 +513,9 @@ class DataProvider extends ChangeNotifier {
   void fetchCurrentWeatherFromLocal() {
     //print("Local Running");
     for (int i = 0; i < _cityList.length; i++) {
-      final List<HourlyWeather> _wh = _weather[_cityList[i].id]["hourly"];
+      final List<HourlyWeather> wh = _weather[_cityList[i].id]["hourly"];
       try {
-        final HourlyWeather hr = _wh.firstWhere((element) {
+        final HourlyWeather hr = wh.firstWhere((element) {
           return utils.compareDateTime(element.timestamp);
         });
         _getCurrentWeather(
