@@ -484,7 +484,7 @@ class DataProvider extends ChangeNotifier {
       dynamic hWeather, int id, bool temporary) async {
     List<HourlyWeather> _hw = [];
     for (int i = 0; i < hWeather.length; i++) {
-      HourlyWeather _hwtemp = HourlyWeather(
+      HourlyWeather hwtemp = HourlyWeather(
         timestamp: hWeather[i]['dt'],
         temp: utils.toDouble(hWeather[i]['temp']),
         clouds: hWeather[i]['clouds'],
@@ -500,11 +500,11 @@ class DataProvider extends ChangeNotifier {
       if (!temporary) {
         await _database.insert(
           'hourly$id',
-          _hwtemp.toMap(),
+          hwtemp.toMap(),
           conflictAlgorithm: ConflictAlgorithm.replace,
         );
       }
-      _hw.add(_hwtemp);
+      _hw.add(hwtemp);
     }
     return [..._hw];
   }
